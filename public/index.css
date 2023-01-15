@@ -1,0 +1,15 @@
+h1.dumi-default-hero-title {
+  font-size: 100px;
+}
+
+#root .dumi-default-logo img {
+  height: 80px;
+}
+
+#root .dumi-default-hero {
+  height: 700px;
+}
+
+#root .dumi-default-features .dumi-default-features-item {
+  text-align: center;
+}
