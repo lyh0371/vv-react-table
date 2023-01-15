@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-<img src="https://github.com/lyh0371/vv-react-table/blob/master/public/logo.png" alt="sp-ui" height="200">
+<img src="https://github.com/lyh0371/vv-react-table/blob/master/public/logo.png" alt="sp-ui" height="150">
 <h1 align="center">vv-react-table</h1>
 </p>
 <p align="center">
