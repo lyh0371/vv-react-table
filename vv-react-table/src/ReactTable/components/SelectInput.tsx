@@ -1,11 +1,24 @@
 import { useUpdateEffect } from 'ahooks';
-import React, { memo, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Cell, Column, HeaderCell, RowDataType } from 'rsuite-table';
 import { RowSelection } from '../types';
 import { errorLog } from '../utils';
-const SelectInput: React.FC<{ rowSelection: RowSelection; data: RowDataType[] }> = ({
-  rowSelection: { width = 30, type = 'checkbox', fixed = 'left', key = 'id', onChange },
+const SelectInput: React.FC<{
+  rowSelection: RowSelection;
+  data: RowDataType[];
+  headerHeight?: number;
+  rowHeight?: number | ((rowData?: RowDataType) => number);
+}> = ({
+  rowSelection: {
+    width = 30,
+    type = 'checkbox',
+    fixed = 'left',
+    key = 'id',
+    onChange,
+  },
   data,
+  headerHeight = 40,
+  rowHeight,
 }) => {
   const [ids, setIds] = useState<string[]>([]);
   const keyId = useRef<string | undefined>('');
@@ -22,7 +35,6 @@ const SelectInput: React.FC<{ rowSelection: RowSelection; data: RowDataType[] }>
       rowItem.current = rowData;
     } else {
       setIds((ids) => ids.filter((idItem) => idItem != id));
-      console.log(rowData);
       rowItem.current = {};
     }
     keyId.current = id;
@@ -36,7 +48,7 @@ const SelectInput: React.FC<{ rowSelection: RowSelection; data: RowDataType[] }>
       setIds(() =>
         data.map((item) => {
           return item[key];
-        })
+        }),
       );
     } else {
       // 不全选
@@ -52,13 +64,17 @@ const SelectInput: React.FC<{ rowSelection: RowSelection; data: RowDataType[] }>
   }, [ids]);
 
   return (
-    <Column width={width} fixed={fixed ? 'left' : undefined}>
-      <HeaderCell>
+    <Column width={width} fixed={fixed ? 'left' : undefined} align="center">
+      <HeaderCell style={{ lineHeight: `${headerHeight}px` }}>
         {type === 'checkbox' && (
-          <input type={type} checked={data.length === ids.length} onChange={(e) => allInputChange(e)} />
+          <input
+            type={type}
+            checked={data.length === ids.length}
+            onChange={(e) => allInputChange(e)}
+          />
         )}
       </HeaderCell>
-      <Cell>
+      <Cell style={{ lineHeight: `${rowHeight}px` }} align="center">
         {(rowData) => {
           return (
             <input

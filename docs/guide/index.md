@@ -7,27 +7,47 @@ group:
   order: -1
 ---
 
-# 什么是 dumi
+# 什么是 vv-react-table
 
-dumi，中文发音**嘟米**，是一款为组件开发场景而生的静态站点框架，与 [father](https://github.com/umijs/father) 一起为开发者提供一站式的组件开发体验，**father 负责组件源码构建，而 dumi 负责组件开发及组件文档生成**。
+vv-react-table 是一款基于 [rsuite-table](https://github.com/rsuite/rsuite-table)二次封装的虚拟表格组件。支持通过 JSON 配置生成虚拟表格，并对 `rsuite-table` 进行了扩展
 
-## 特性
+## 功能
 
-全新的 dumi 2.0 主要具备以下特性：
+vv-react-table 主要支持以下功能：
 
-- 🚀 **更好的编译性能**：通过结合使用 <a href="https://umijs.org/blog/mfsu-faster-than-vite" target="_blank" rel="noreferrer">Umi 4 MFSU</a>、esbuild、SWC、持久缓存等方案，带来比 dumi 1.x 更快的编译速度
-- 🔍 **内置全文搜索**：不需要接入任何三方服务，标题、正文、demo 等内容均可被搜索，支持多关键词搜索，且不会带来产物体积的增加
-- 🎨 **全新主题系统**：为主题包增加插件、国际化等能力的支持，且参考 <a href="https://docusaurus.io/docs/swizzling" target="_blank" rel="noreferrer">Docusaurus</a> 为主题用户提供局部覆盖能力，更强更易用
-- 🚥 **约定式路由增强**：通过拆分路由概念、简化路由配置等方式，让路由生成一改 dumi 1.x 的怪异、繁琐，更加符合直觉
-- 💡 **资产元数据 2.0**：在 1.x 及 JSON Schema 的基础上对资产属性定义结构进行全新设计，为资产的流通提供更多可能
-- 💎 **继续为组件研发而生**：提供与全新的 NPM 包研发工具 <a href="https://github.com/umijs/father" target="_blank" rel="noreferrer">father 4</a> 集成的脚手架，为开发者提供一站式的研发体验
+- 🚀 **表格宽度拖拽** 需设置固定宽度即可实现宽度拖拽
+- 🔍 **拖拽行和列**：表格行和列可自由拖拽
+- 🎨 **右键菜单**：支持给每一列单独设置右键菜单，右键菜单样式可自定义
+- 🚥 **表头及列的合并**：通过简单配置即可时间表头和列的合并
+- 💡 **行内编辑**：对行内元素进行编辑
+- 💎 更多高级用法请看[示例](/components/vv-react-table)
+
+## 使用
+
+1. 下载依赖
+
+```shell
+
+npm install vv-react-table -S
+# or
+yarn add vv-react-table -S
+# or
+pnpm install vv-react-table -S
+
+```
+
+2. 引入组件及样式
+
+```js
+import ReactTable from '@vv-react-table/vv-react-table';
+```
 
 ## 问题反馈
 
-如果在使用过程中发现任何问题、或者有改善建议，欢迎在 GitHub Issues 进行反馈：https://github.com/umijs/dumi/issues
+如果在使用过程中发现任何问题、或者有改善建议，欢迎在 GitHub Issues 进行反馈：https://github.com/lyh0371/vv-react-table/issues
 
-或加入讨论群：
+或加我微信进入讨论群（加微信请备注虚拟表格）：
 
 <div>
-  <img data-type="dingtalk" src="https://gw.alipayobjects.com/zos/bmw-prod/7362dab4-374e-42c6-9d52-85fd4b5e357b/lbesxxl3_w1004_h1346.jpeg" width="300" />
+  <img  src="/rwm.jpeg" width="300" />
 </div>

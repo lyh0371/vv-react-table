@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import ReactTable, { TColumn } from './ReactTable';
 function App() {
   type Item = {
@@ -9,20 +9,21 @@ function App() {
 
   const columns: TColumn<Item>[] = [
     {
-      title: '工厂',
-      dataIndex: 'aaa',
-      minWidth: 1000,
-    },
-
-    {
-      title: '配方代码',
-      dataIndex: 'ccc',
-      minWidth: 100,
-    },
-    {
-      title: '工厂',
+      title: '工厂 title',
       dataIndex: 'aaa',
       minWidth: 100,
+      columnChildren: [
+        {
+          title: '配方代码 child',
+          dataIndex: 'ccc',
+          minWidth: 100,
+        },
+        {
+          title: '工厂 child',
+          dataIndex: 'aaa',
+          minWidth: 100,
+        },
+      ],
     },
     {
       title: '价格工厂',
@@ -39,7 +40,7 @@ function App() {
         ccc: 3,
         id: index.toString(),
       })),
-    [columns]
+    [columns],
   );
 
   return (
@@ -55,7 +56,15 @@ function App() {
             console.log('row', row);
           },
         }}
+        renderTreeToggle={(icon, rowData: any) => {
+          if (rowData.children && rowData.children.length === 0) {
+            return 'loading';
+          }
+          return icon;
+        }}
         height={600}
+        headerHeight={60}
+        rowHeight={30}
         bordered
         columns={columns}
         data={tableData}

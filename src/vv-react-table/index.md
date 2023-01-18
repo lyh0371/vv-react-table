@@ -1,6 +1,8 @@
-# Foo
+# 示例
 
-This is an example component.
+## 基础用法
+
+代码演示
 
 ```jsx
 import ReactTable, { TColumn } from '@vv-react-table/vv-react-table';
