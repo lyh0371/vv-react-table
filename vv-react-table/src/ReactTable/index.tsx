@@ -20,7 +20,7 @@ const ReactTable = (props: ReactTableType) => {
       >
         {/* 头部 */}
         <HeaderCell style={{ lineHeight: `${headerHeight / deep}px ` }}>
-          {item.title}1
+          {item.title}
         </HeaderCell>
         {/* 对应的数据 */}
         {item.render && typeof item.render === 'function' ? (

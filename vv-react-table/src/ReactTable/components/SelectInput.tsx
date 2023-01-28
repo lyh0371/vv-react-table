@@ -24,6 +24,8 @@ const SelectInput: React.FC<{
   const keyId = useRef<string | undefined>('');
   const rowItem = useRef<Obj>({});
   const inputChange = (e: React.ChangeEvent, rowData: Obj) => {
+    console.log('rowData', rowData);
+
     if (rowData[key] === undefined) {
       errorLog(`data里需要包含${key}`);
       return false;

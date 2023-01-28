@@ -4,12 +4,13 @@ function App() {
     aaa: string;
     bbb: string;
     ccc: string;
+    name: string;
   };
 
   const columns: TColumn<Item>[] = [
     {
       title: '价格工厂1',
-      dataIndex: 'bbb',
+      dataIndex: 'name',
       minWidth: 100,
       rowSpan: (rowData) => {
         return rowData.rowSpan;
@@ -74,19 +75,32 @@ function App() {
       id: '2',
     },
     {
-      rowSpan: 2,
+      rowSpan: 3,
+      aaa: 111,
+      bbb: 2222,
+      name: 'a',
+      ccc: 333,
+      id: '22',
     },
     {
       aaa: 1,
+      name: 'a',
       bbb: 2,
       ccc: 3,
       id: '3',
     },
     {
       aaa: 1,
+      name: 'a',
       bbb: 2,
       ccc: 3,
       id: '4',
+    },
+    {
+      aaa: 11,
+      bbb: 22,
+      ccc: 33,
+      id: '5',
     },
   ];
 
