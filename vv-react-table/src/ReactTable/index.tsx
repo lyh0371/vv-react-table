@@ -24,14 +24,24 @@ const ReactTable = (props: ReactTableType) => {
         </HeaderCell>
         {/* 对应的数据 */}
         {item.render && typeof item.render === 'function' ? (
-          <Cell style={{ lineHeight: `${rowHeight}px` }}>
+          <Cell
+            style={{
+              lineHeight: `${rowHeight}px`,
+              display: 'table-cell',
+              verticalAlign: 'middle',
+            }}
+          >
             {(rowData) => {
               return item.render!(rowData as columnsType);
             }}
           </Cell>
         ) : (
           <Cell
-            style={{ lineHeight: `${rowHeight}px` }}
+            style={{
+              lineHeight: `${rowHeight}px`,
+              display: 'table-cell',
+              verticalAlign: 'middle',
+            }}
             dataKey={item.dataIndex}
           />
         )}

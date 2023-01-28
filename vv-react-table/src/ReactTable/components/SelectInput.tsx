@@ -76,7 +76,12 @@ const SelectInput: React.FC<{
           />
         )}
       </HeaderCell>
-      <Cell style={{ lineHeight: `${rowHeight}px` }} align="center">
+      <Cell
+        style={{
+          lineHeight: `${rowHeight}px`,
+        }}
+        align="center"
+      >
         {(rowData) => {
           return (
             <input

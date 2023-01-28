@@ -1,5 +1,9 @@
+import React from 'react';
+import { SortType } from 'rsuite-table';
 import ReactTable, { TColumn } from './ReactTable';
 function App() {
+  const [sortColumn, setSortColumn] = React.useState('id');
+  const [sortType, setSortType] = React.useState<SortType>('asc');
   type Item = {
     aaa: string;
     bbb: string;
@@ -12,6 +16,7 @@ function App() {
       title: '价格工厂1',
       dataIndex: 'name',
       minWidth: 100,
+      sortable: true,
       rowSpan: (rowData) => {
         return rowData.rowSpan;
       },
@@ -107,6 +112,13 @@ function App() {
   return (
     <div className="App">
       <ReactTable
+        sortType={sortType}
+        sortColumn={sortColumn}
+        onSortColumn={(sortColumn, sortType) => {
+          console.log(sortColumn, sortType);
+          sortType && setSortType(sortType);
+          setSortColumn(sortColumn);
+        }}
         rowSelection={{
           key: 'id',
           type: 'checkbox',
