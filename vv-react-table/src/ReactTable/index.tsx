@@ -1,11 +1,8 @@
 import { memo } from 'react';
 import { Cell, Column, ColumnGroup, HeaderCell, Table } from 'rsuite-table';
-
 import SelectInput from './components/SelectInput';
-import './index.scss';
-// import '"rsuite-table/dist/css/rsuite-table.css';
-// import 'rsuite-table/lib/less/index.less';
 import { columnProps, tableProps } from './props';
+import './style/index.scss';
 import { columnsType, ReactTableType } from './types';
 const ReactTable = (props: ReactTableType) => {
   const { columns, rowSelection, data, headerHeight = 40, rowHeight } = props;

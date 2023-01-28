@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import ReactTable, { TColumn } from './ReactTable';
 function App() {
   type Item = {
@@ -8,6 +7,24 @@ function App() {
   };
 
   const columns: TColumn<Item>[] = [
+    {
+      title: '价格工厂1',
+      dataIndex: 'bbb',
+      minWidth: 100,
+      rowSpan: (rowData) => {
+        return rowData.rowSpan;
+      },
+    },
+    {
+      title: '价格工厂2',
+      dataIndex: 'bbb',
+      minWidth: 100,
+    },
+    {
+      title: '价格工厂3',
+      dataIndex: 'bbb',
+      minWidth: 100,
+    },
     {
       title: '工厂 title',
       dataIndex: 'aaa',
@@ -32,16 +49,46 @@ function App() {
     },
   ];
 
-  const tableData = useMemo(
-    () =>
-      new Array(4).fill(undefined).map((item, index) => ({
-        aaa: 1,
-        bbb: 2,
-        ccc: 3,
-        id: index.toString(),
-      })),
-    [columns],
-  );
+  // const tableData = useMemo(
+  //   () =>
+  //     new Array(4).fill(undefined).map((item, index) => ({
+  //       aaa: 1,
+  //       bbb: 2,
+  //       ccc: 3,
+  //       id: index.toString(),
+  //     })),
+  //   [columns],
+  // );
+
+  const tableData = [
+    {
+      aaa: 1,
+      bbb: 2,
+      ccc: 3,
+      id: '1',
+    },
+    {
+      aaa: 1,
+      bbb: 2,
+      ccc: 3,
+      id: '2',
+    },
+    {
+      rowSpan: 2,
+    },
+    {
+      aaa: 1,
+      bbb: 2,
+      ccc: 3,
+      id: '3',
+    },
+    {
+      aaa: 1,
+      bbb: 2,
+      ccc: 3,
+      id: '4',
+    },
+  ];
 
   return (
     <div className="App">
