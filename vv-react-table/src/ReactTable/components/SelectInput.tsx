@@ -18,7 +18,7 @@ const SelectInput: React.FC<{
   },
   data,
   headerHeight = 40,
-  rowHeight,
+  rowHeight = 46,
 }) => {
   const [ids, setIds] = useState<string[]>([]);
   const keyId = useRef<string | undefined>('');
