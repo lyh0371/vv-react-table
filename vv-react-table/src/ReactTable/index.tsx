@@ -1,11 +1,21 @@
-import { memo } from 'react';
+import { memo, useRef } from 'react';
 import { Cell, Column, ColumnGroup, HeaderCell, Table } from 'rsuite-table';
 import SelectInput from './components/SelectInput';
 import { columnProps, tableProps } from './props';
 import './style/index.scss';
 import { columnsType, ReactTableType } from './types';
+import { fullCore } from './utils/full';
 const ReactTable = (props: ReactTableType) => {
-  const { columns, rowSelection, data, headerHeight = 40, rowHeight } = props;
+  const {
+    columns,
+    rowSelection,
+    data,
+    headerHeight = 40,
+    rowHeight,
+    dbClickFull,
+  } = props;
+  const vvTable = useRef(null);
+  const vvTableWapper = useRef(null);
   // 把设置为 hidden 的过滤掉
   const noHiddenColumns = columns.filter((item) => !item.hidden);
   // 生成 Column props
@@ -19,7 +29,13 @@ const ReactTable = (props: ReactTableType) => {
         flexGrow={item.width ? undefined : 1}
       >
         {/* 头部 */}
-        <HeaderCell style={{ lineHeight: `${headerHeight / deep}px ` }}>
+        <HeaderCell
+          style={{ lineHeight: `${headerHeight / deep}px ` }}
+          onDoubleClick={() => {
+            if (!dbClickFull) return false;
+            fullCore(vvTableWapper.current as unknown as HTMLDivElement);
+          }}
+        >
           {item.title}
         </HeaderCell>
         {/* 对应的数据 */}
@@ -49,8 +65,14 @@ const ReactTable = (props: ReactTableType) => {
     );
   };
   return (
-    <div className="lyh-react-table-wrapper">
-      <Table virtualized {...tableProps(props)} bordered cellBordered>
+    <div className="lyh-react-table-wrapper" ref={vvTableWapper}>
+      <Table
+        ref={vvTable}
+        virtualized
+        {...tableProps(props)}
+        bordered
+        cellBordered
+      >
         {showSelectInput &&
           data.length > 0 &&
           SelectInput({ rowSelection, data, headerHeight, rowHeight })}

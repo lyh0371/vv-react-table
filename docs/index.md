@@ -4,9 +4,9 @@ hero:
   description:
   actions:
     - text: 开始使用
-      link: /
+      link: /components/vv-react-table
     - text: 查看源码
-      link: /
+      link: https://github.com/lyh0371/vv-react-table
 features:
   - title: TypeScript
     emoji: ✌

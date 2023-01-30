@@ -30,16 +30,14 @@ export interface columnsType extends ColumnProps {
 
 // table 类型
 export interface ReactTableType
-  extends Omit<
-    TableProps,
-    'defaultExpandAllRows' | 'defaultExpandAllRows' | 'data'
-  > {
+  extends Omit<TableProps, 'defaultExpandAllRows' | 'data'> {
   /**
    * table props 类型
    */
   columns: columnsType[];
   rowSelection?: RowSelection; // 是否支持选择行
   data: RowDataType[];
+  dbClickFull?: boolean;
 }
 
 export interface TColumn<T> extends Omit<columnsType, 'dataIndex'> {

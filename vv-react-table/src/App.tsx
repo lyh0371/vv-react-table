@@ -110,7 +110,7 @@ function App() {
   ];
 
   return (
-    <div className="App">
+    <div className="App" style={{ width: '200px', height: '400px' }}>
       <ReactTable
         sortType={sortType}
         sortColumn={sortColumn}
@@ -139,6 +139,7 @@ function App() {
         headerHeight={60}
         rowHeight={30}
         bordered
+        dbClickFull
         columns={columns}
         data={tableData}
       ></ReactTable>
