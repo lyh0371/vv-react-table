@@ -8,17 +8,6 @@
 <a href="https://github.com/lyh0371/web-norm/vv-react-table"><img alt="GitHub forks" src="https://img.shields.io/github/forks/lyh0371/vv-react-table"></a>
 </p>
 
----
-
-nav:
-title: 指南
-order: -1
-group:
-title: 介绍
-order: -1
-
----
-
 # 什么是 vv-react-table
 
 vv-react-table 是一款基于 [rsuite-table](https://github.com/rsuite/rsuite-table)二次封装的虚拟表格组件。支持通过 JSON 配置生成虚拟表格，并对 `rsuite-table` 进行了扩展
@@ -61,5 +50,5 @@ import ReactTable from 'vv-react-table';
 或加我微信(lyh1347635797)进入讨论群（加微信请备注虚拟表格）：
 
 <div>
-  <img  src="/rwm.jpeg" width="300" />
+  <img  src="/public/rwm.jpeg" width="300" />
 </div>
