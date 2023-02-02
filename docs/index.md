@@ -14,7 +14,7 @@ features:
   - title: 丰富的案例说明
     emoji: ✊
     description: 支持大多数使用场景
-  - title: React
+  - title: 可扩展
     emoji: 🤝
-    description: 拥抱React Hook
+    description: 超强的扩展性
 ---
