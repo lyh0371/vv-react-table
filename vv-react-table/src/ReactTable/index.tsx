@@ -5,6 +5,7 @@ import { columnProps, tableProps } from './props';
 import './style/index.scss';
 import { columnsType, ReactTableType } from './types';
 import { fullCore } from './utils/full';
+import onContextMenu from './utils/onContextMenu';
 const ReactTable = (props: ReactTableType) => {
   const {
     columns,
@@ -13,6 +14,7 @@ const ReactTable = (props: ReactTableType) => {
     headerHeight = 40,
     rowHeight,
     dbClickFull,
+    rightClickMenu,
   } = props;
   const vvTable = useRef(null);
   const vvTableWapper = useRef(null);
@@ -39,28 +41,36 @@ const ReactTable = (props: ReactTableType) => {
           {item.title}
         </HeaderCell>
         {/* 对应的数据 */}
-        {item.render && typeof item.render === 'function' ? (
-          <Cell
-            style={{
-              lineHeight: `${rowHeight}px`,
-              display: 'table-cell',
-              verticalAlign: 'middle',
-            }}
-          >
-            {(rowData) => {
-              return item.render!(rowData as columnsType);
-            }}
-          </Cell>
-        ) : (
-          <Cell
-            style={{
-              lineHeight: `${rowHeight}px`,
-              display: 'table-cell',
-              verticalAlign: 'middle',
-            }}
-            dataKey={item.dataIndex}
-          />
-        )}
+
+        <Cell
+          dataKey={item.dataIndex}
+          style={{
+            display: 'table-cell',
+            verticalAlign: 'middle',
+          }}
+        >
+          {(rowData, index) => {
+            const renderItem =
+              item.render && typeof item.render === 'function'
+                ? item.render!(rowData as columnsType, index!)
+                : rowData[item.dataIndex!];
+
+            return (
+              <div
+                style={{
+                  height: `${rowHeight}px`,
+                  lineHeight: `${rowHeight}px`,
+                }}
+                className="vv-row-item"
+                onContextMenu={(e) => {
+                  onContextMenu(e, rowData, index!, item, rightClickMenu);
+                }}
+              >
+                {renderItem}
+              </div>
+            );
+          }}
+        </Cell>
       </Column>
     );
   };

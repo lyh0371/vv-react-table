@@ -1,3 +1,4 @@
+import React from 'react';
 import { ColumnProps, RowDataType, TableProps } from 'rsuite-table';
 
 export type RowSelection = {
@@ -15,15 +16,19 @@ export type RowSelection = {
   fixed?: 'left';
   width?: number;
 };
-//每一行的类型
+//每一列的类型
 export interface columnsType extends ColumnProps {
   /**
-   * 每一行的类型
+   * 每一列的类型
    */
   title: string; // 头部标题
-  dataIndex: string; // 字段
+  dataIndex?: string; // 字段
   hidden?: boolean; // 是否隐藏
-  render?: (row: any) => JSX.Element;
+  contextMenu?: boolean; // 是否开启右键菜单
+  rightClickMenu?: {
+    render: (row: any, index: number) => React.ReactNode;
+  }; // 自定义此列右键菜单
+  render?: (row: any, index?: number) => JSX.Element;
   columnChildren?: columnsType[]; // 合并头部单元格
   groupHeaderHeight?: number;
 }
@@ -38,12 +43,15 @@ export interface ReactTableType
   rowSelection?: RowSelection; // 是否支持选择行
   data: RowDataType[];
   dbClickFull?: boolean;
+  rightClickMenu?: {
+    render: (row: any, index: number) => React.ReactNode;
+  }; // 右键菜单
 }
 
 export interface TColumn<T> extends Omit<columnsType, 'dataIndex'> {
   /**
    * column 类型
    */
-  dataIndex: keyof T;
-  render?: (row: T) => JSX.Element;
+  dataIndex?: keyof T;
+  render?: (row: T, index?: number) => JSX.Element;
 }

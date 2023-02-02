@@ -9,8 +9,8 @@ const TableColumns = (columns: columnsType[]) => {
         <HeaderCell> {item.title} </HeaderCell>
         {item.render && typeof item.render === 'function' ? (
           <Cell>
-            {(rowData) => {
-              return item.render!(rowData as columnsType);
+            {(rowData, index) => {
+              return item.render!(rowData as columnsType, index);
             }}
           </Cell>
         ) : (

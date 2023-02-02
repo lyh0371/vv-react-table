@@ -7,6 +7,9 @@ export const columnProps = (props: columnsType) => {
   const propsItem: itemType = cloneDeep(props);
   delete propsItem.dataIndex;
   delete propsItem.title;
+  delete propsItem.render;
+  delete propsItem.rightClickMenu;
+  delete propsItem.contextMenu;
 
   return propsItem;
 };
@@ -17,5 +20,6 @@ export const tableProps = (props: ReactTableType) => {
   delete propsItem.columns;
   delete propsItem.rowSelection;
   delete propsItem.dbClickFull;
+  delete propsItem.rightClickMenu;
   return propsItem;
 };
