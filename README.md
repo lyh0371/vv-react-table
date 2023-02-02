@@ -47,7 +47,7 @@ import ReactTable from 'vv-react-table';
 
 如果在使用过程中发现任何问题、或者有改善建议，欢迎在 GitHub Issues 进行反馈：https://github.com/lyh0371/vv-react-table/issues
 
-或加我微信(lyh1347635797)进入讨论群（加微信请备注虚拟表格）：
+或加我微信(lyh1347635797)直接反馈（加微信请备注虚拟表格）：
 
 <div>
   <img  src="/public/rwm.jpeg" width="300" />
