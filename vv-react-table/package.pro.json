@@ -1,11 +1,11 @@
 {
   "name": "vv-react-table",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "type": "module",
-  "main": "dist/index.esm.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/type/index.d.ts",
-  "style": "dist/index.esm.css",
+  "main": "index.esm.js",
+  "module": "index.esm.js",
+  "types": "type/index.d.ts",
+  "style": "index.esm.css",
   "keywords": ["vv-react-table", "table"],
   "license": "MIT",
   "peerDependencies": {
@@ -16,6 +16,7 @@
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "prop-types": "^15.8.1",
     "rsuite-table": "^5.8.1"
   },
   "browserslist": ["> 1%", "not ie 11", "not op_mini all"]

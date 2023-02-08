@@ -2,7 +2,7 @@ import { defineConfig } from 'dumi';
 
 export default defineConfig({
   outputPath: 'docs-dist',
-  base: '/',
+  base: '、',
   themeConfig: {
     name: '首页',
     logo: '/logo.png',

@@ -2,7 +2,6 @@
   "name": "vv-react-table",
   "version": "0.0.1",
   "description": "",
-  "homepage": "http://www.h5love.cn/",
   "license": "MIT",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -44,9 +43,6 @@
       "prettier --parser=typescript --write"
     ]
   },
-  "dependencies": {
-    "@vv-react-table/vv-react-table": "workspace:^0.0.0"
-  },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
@@ -71,5 +67,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "authors": []
+  "authors": [],
+  "dependencies": {
+    "@vv-react-table/vv-react-table": "workspace:^0.0.0"
+  }
 }
