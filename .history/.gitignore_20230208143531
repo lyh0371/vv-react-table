@@ -1,0 +1,10 @@
+/dist
+.dumi/tmp
+.dumi/tmp-test
+.dumi/tmp-production
+docs-dist
+node_modules
+vv-react-table/node_modules
+vv-react-table/dist
+.DS_Store
+.history
