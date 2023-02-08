@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { SortType } from 'rsuite-table';
 import ReactTable, { TColumn } from './ReactTable';
-
 function App() {
   const [sortColumn, setSortColumn] = React.useState('id');
   const [sortType, setSortType] = React.useState<SortType>('asc');
