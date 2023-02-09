@@ -13,7 +13,7 @@ function App() {
     id: string;
   };
 
-  const columns: TColumn<Item>[] = [
+  let columns: TColumn<Item>[] = [
     {
       title: '价格工厂1',
       dataIndex: 'name',
@@ -68,6 +68,9 @@ function App() {
         },
       },
     },
+  ];
+
+  const columns2: TColumn<Item>[] = [
     {
       title: '工厂 title',
       dataIndex: 'aaa',
@@ -192,60 +195,70 @@ function App() {
     },
   ]);
 
+  const tableDom = () => {
+    setTimeout(() => {
+      columns = [...columns, ...columns2];
+    }, 1000);
+    return (
+      <div style={{ height: '600px' }}>
+        <ReactTable
+          sortType={sortType}
+          fillHeight
+          sortColumn={sortColumn}
+          onSortColumn={(sortColumn, sortType) => {
+            console.log(sortColumn, sortType);
+            sortType && setSortType(sortType);
+            setSortColumn(sortColumn);
+          }}
+          rowSelection={{
+            key: 'id',
+            type: 'checkbox',
+            onChange: (ids, rows, id, row) => {
+              console.log('ids', ids);
+              console.log('rows', rows);
+              console.log('id', id);
+              console.log('row', row);
+            },
+          }}
+          renderTreeToggle={(icon, rowData: any) => {
+            if (rowData.children && rowData.children.length === 0) {
+              return 'loading';
+            }
+            return icon;
+          }}
+          headerHeight={60}
+          rowHeight={30}
+          bordered
+          dbClickFull
+          rightClickMenu={{
+            render(row, index) {
+              return (
+                <div
+                  onClick={() => {
+                    alert(JSON.stringify(row));
+                  }}
+                  style={{
+                    padding: '5px 10px',
+                    cursor: 'pointer',
+                  }}
+                >
+                  <div>第一列</div>
+                  <div>第二列</div>
+                  <div>第三列</div>
+                </div>
+              );
+            },
+          }}
+          columns={columns}
+          data={tableData}
+        ></ReactTable>
+      </div>
+    );
+  };
   return (
     <div className="App">
       {/* <button style={{ marginBottom: '10px',background:'#1677ff',color:'#fff' }} onClick={()=>alert(JSON.stringify())}>保存数据</button> */}
-      <ReactTable
-        sortType={sortType}
-        sortColumn={sortColumn}
-        onSortColumn={(sortColumn, sortType) => {
-          console.log(sortColumn, sortType);
-          sortType && setSortType(sortType);
-          setSortColumn(sortColumn);
-        }}
-        rowSelection={{
-          key: 'id',
-          type: 'checkbox',
-          onChange: (ids, rows, id, row) => {
-            console.log('ids', ids);
-            console.log('rows', rows);
-            console.log('id', id);
-            console.log('row', row);
-          },
-        }}
-        renderTreeToggle={(icon, rowData: any) => {
-          if (rowData.children && rowData.children.length === 0) {
-            return 'loading';
-          }
-          return icon;
-        }}
-        height={600}
-        headerHeight={60}
-        rowHeight={30}
-        bordered
-        dbClickFull
-        rightClickMenu={{
-          render(row, index) {
-            return (
-              <div
-                onClick={() => {
-                  alert(JSON.stringify(row));
-                }}
-                style={{
-                  padding: '5px 10px',
-                  cursor: 'pointer',
-                }}
-              >
-                <div>第一列</div>
-                <div>第二列</div>
-                <div>第三列</div>
-              </div>
-            );
-          },
-        }}
-        columns={columns}
-        data={tableData}
-      ></ReactTable>
+      {tableDom()}
     </div>
   );
 }
